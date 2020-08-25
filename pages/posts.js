@@ -1,22 +1,22 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useEffect, useState } from "react"
-import PageLists from '../components/PageLists';
+import PostsList from '../components/PostsList';
 import Link from 'next/link';
 
 
 export default function Home() {
-  const [pages, setPages] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const url = 'https://snapvatme.com/wp-json/wp/v2/pages'
+    const url = 'https://snapvatme.com/wp-json/wp/v2/Posts'
     var req = new Request(url);
     fetch(req)
       .then((response) => {
         return response.json();
       }).then(res => {
-
-        setPages(res)
+        
+        setPosts(res)
       })
   }, [])
   return (
@@ -24,15 +24,14 @@ export default function Home() {
       <Head>
         <title>Next WP</title>
       </Head>
+      <Link href="/"><a>👈Back</a></Link>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Next Js with <a>Wordpress</a>
+         Posts
         </h1>
-        <ul>
-          <li><Link href = "/pages"><a>Pages</a></Link></li>
-          <li><Link href = "/posts"><a>Posts</a></Link></li>
-        </ul>
+
+        <PostsList posts = {posts} />
       </main>
     </div>
   )

@@ -15,24 +15,23 @@ export default function Home() {
       .then((response) => {
         return response.json();
       }).then(res => {
-
+        
         setPages(res)
       })
   }, [])
   return (
     <div className={styles.container}>
+        <Link href="/"><a>👈Back</a></Link>
       <Head>
         <title>Next WP</title>
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Next Js with <a>Wordpress</a>
+         Pages
         </h1>
-        <ul>
-          <li><Link href = "/pages"><a>Pages</a></Link></li>
-          <li><Link href = "/posts"><a>Posts</a></Link></li>
-        </ul>
+
+        <PageLists pages = {pages} />
       </main>
     </div>
   )
