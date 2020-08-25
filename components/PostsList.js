@@ -7,7 +7,7 @@ const PostsList = (props) => {
             <ul>
                 {props.posts.map((el, i) => {
                     return (
-                        <li key={i}><Link href = {"details/[id]"} as = {`/details/${el.id}`}><a>{el.title.rendered}</a></Link></li>
+                        <li key={i}><Link href = {"postDetails/[id]"} as = {`/postDetails/${el.id}`}><a>{el.title.rendered}</a></Link></li>
                     )
                 })}
             </ul>

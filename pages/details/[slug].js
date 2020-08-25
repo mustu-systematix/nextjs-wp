@@ -9,7 +9,6 @@ const Details = (props) => {
     const [pageDetail, setPageDetail] = useState({});
 
     useEffect(() => {
-        console.log(slug, "slug");
         const url = 'https://snapvatme.com/wp-json/wp/v2/pages/' + slug
         var req = new Request(url);
         fetch(req)
